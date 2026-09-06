@@ -295,10 +295,90 @@
     .teacher-quote { padding: 28px 24px; }
     section { padding: 72px 20px; }
   }
+ <style>
+  /* Lớp nền mờ che toàn trang */
+  .modal-overlay {
+    display: flex;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Hộp nội dung Popup */
+  .modal-content {
+    background: #fff;
+    padding: 30px 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    text-align: center;
+  }
+
+  /* Nút tắt X */
+  .close-btn {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+  }
+
+  .modal-title { color: #e65100; margin-bottom: 5px; font-size: 22px; }
+  .modal-subtitle { font-size: 13px; color: #666; margin-bottom: 20px; font-style: italic; }
+
+  /* Ô nhập liệu */
+  .modal-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #1976d2;
+    border-radius: 6px;
+    box-sizing: border-box;
+    outline: none;
+  }
+
+  /* Nút Đăng ký */
+  .modal-submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #f26522;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .modal-submit-btn:hover { background-color: #d85413; }
 </style>
 </head>
 <body>
-
+<!-- Bảng Popup Đăng ký -->
+<div id="popupModal" class="modal-overlay">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <h2 class="modal-title">Ưu Đãi Học Phí</h2>
+    <p class="modal-subtitle">* Đăng ký ngay để nhận tư vấn chi tiết</p>
+    
+    <form id="registerForm">
+      <input type="text" placeholder="Họ và tên" required class="modal-input">
+      <input type="tel" placeholder="Số điện thoại" required class="modal-input">
+      <select class="modal-input">
+        <option value="">Chọn cơ sở gần bạn</option>
+        <option value="cs1">Cơ sở 1</option>
+        <option value="cs2">Cơ sở 2</option>
+      </select>
+      <button type="submit" class="modal-submit-btn">Đăng Ký Ngay</button>
+    </form>
+  </div>
+</div>
 <!-- NAV -->
 <nav>
   <div class="nav-logo">♪ Nguyễn Phan Music</div>
