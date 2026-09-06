@@ -368,14 +368,14 @@
     <p class="modal-subtitle">* Đăng ký ngay để nhận tư vấn chi tiết</p>
     
     <form id="registerForm">
-      <input type="text" placeholder="Họ và tên" required class="modal-input">
-      <input type="tel" placeholder="Số điện thoại" required class="modal-input">
-      <select class="modal-input">
+      <input type="text" name="fullname" placeholder="Họ và tên" required class="modal-input">
+      <input type="tel" name="phone" placeholder="Số điện thoại" required class="modal-input">
+      <select name="branch" class="modal-input" required>
         <option value="">Chọn cơ sở gần bạn</option>
-        <option value="cs1">Cơ sở 1</option>
-        <option value="cs2">Cơ sở 2</option>
+        <option value="Cơ sở 1">Cơ sở 1</option>
+        <option value="Cơ sở 2">Cơ sở 2</option>
       </select>
-      <button type="submit" class="modal-submit-btn">Đăng Ký Ngay</button>
+      <button type="submit" id="submitBtn" class="modal-submit-btn">Đăng Ký Ngay</button>
     </form>
   </div>
 </div>
@@ -948,7 +948,49 @@ document.querySelectorAll('.course-card,.perk,.review-card,.teacher-quote').forE
     transform: scale(1.08);
 }
 </style>
-</body>
+ <script>
+  // URL Web App từ Google Apps Script
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzdBejwmxxMyBHhkCIBMB6Et-b7Rsupda_0dVx7S9z5cIUzBAhlsQpf-OopAgO4lT1P/exec';
+
+  function closePopup() {
+    document.getElementById('popupModal').style.display = 'none';
+  }
+
+  // Mở popup khi bấm nút Đăng ký
+  document.querySelectorAll('.btn-register').forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('popupModal').style.display = 'flex';
+    });
+  });
+
+  // Gửi dữ liệu form về Google Sheets
+  document.getElementById('registerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerText = 'Đang gửi...';
+
+    const formData = new FormData(this);
+    
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      alert('Đăng ký thành công! Nguyễn Phan Music sẽ liên hệ với bạn sớm nhất.');
+      this.reset();
+      closePopup();
+    })
+    .catch(error => {
+      alert('Đã có lỗi xảy ra. Vui lòng thử lại!');
+    })
+    .finally(() => {
+      btn.disabled = false;
+      btn.innerText = 'Đăng Ký Ngay';
+    });
+  });
+</script>
  <!-- CTA -->
 <section id="cta">
   <h2>Bắt đầu hành trình âm nhạc hôm nay</h2>
@@ -956,7 +998,7 @@ document.querySelectorAll('.course-card,.perk,.review-card,.teacher-quote').forE
   <a class="cta-phone" href="tel:+84398483274">📞 +84 398 483 274</a>
   <a class="cta-phone" href="https://maps.app.goo.gl/m9jRhxfi6UapHycY6" target="_blank">📍 Xem bản đồ</a>
 </section>
-
+</body>
 <!-- FOOTER -->
 <footer>
   <p><strong>Music Nguyễn Phan</strong> – Trung tâm Âm nhạc &amp; Nghệ thuật</p>
