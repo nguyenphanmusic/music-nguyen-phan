@@ -296,88 +296,102 @@
     section { padding: 72px 20px; }
   }
  <style>
-  /* Lớp nền mờ che toàn trang */
-  .modal-overlay {
-    display: flex;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-  }
+ /* --- CSS POPUP FORM --- */
+.modal-overlay {
+  display: none; /* Ẩn mặc định */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px); /* Làm mờ phông nền web siêu đẹp */
+  z-index: 99999; /* Luôn nổi lên trên cùng */
+  justify-content: center;
+  align-items: center;
+}
 
-  /* Hộp nội dung Popup */
-  .modal-content {
-    background: #fff;
-    padding: 30px 25px;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 400px;
-    position: relative;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    text-align: center;
-  }
+.modal-content {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+  text-align: center;
+  animation: popIn 0.3s ease-out; /* Hiệu ứng nảy lên khi mở */
+}
 
-  /* Nút tắt X */
-  .close-btn {
-    position: absolute;
-    top: 10px; right: 15px;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #333;
-  }
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 
-  .modal-title { color: #e65100; margin-bottom: 5px; font-size: 22px; }
-  .modal-subtitle { font-size: 13px; color: #666; margin-bottom: 20px; font-style: italic; }
+/* Nút tắt X */
+.close-btn {
+  position: absolute; top: 10px; right: 15px;
+  font-size: 28px; font-weight: bold; cursor: pointer; color: #555;
+}
 
-  /* Ô nhập liệu */
-  .modal-input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 12px;
-    border: 1px solid #1976d2;
-    border-radius: 6px;
-    box-sizing: border-box;
-    outline: none;
-  }
+.modal-title { color: #e65100; margin-bottom: 5px; font-size: 22px; }
+.modal-subtitle { font-size: 13px; color: #666; margin-bottom: 20px; font-style: italic; }
 
-  /* Nút Đăng ký */
-  .modal-submit-btn {
-    width: 100%;
-    padding: 12px;
-    background-color: #f26522;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  .modal-submit-btn:hover { background-color: #d85413; }
+.modal-input {
+  width: 100%; padding: 12px; margin-bottom: 12px;
+  border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; outline: none;
+}
+.modal-input:focus { border-color: #f26522; }
+
+.modal-submit-btn {
+  width: 100%; padding: 12px; background-color: #f26522; color: white;
+  border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer;
+}
+
+/* --- NÚT ĐĂNG KÝ THU NHỎ Ở GÓC PHẢI --- */
+.floating-reg-btn {
+  display: none; /* Ban đầu ẩn, chỉ hiện khi tắt form */
+  position: fixed;
+  bottom: 220px; /* Cao hơn nút FB, Zalo. Nếu bị đè thì bro tăng số này lên 250px nhé */
+  right: 20px;
+  background: linear-gradient(45deg, #f26522, #ff9800);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-weight: bold; font-size: 14px;
+  box-shadow: 0 4px 15px rgba(242, 101, 34, 0.4);
+  cursor: pointer;
+  z-index: 9998;
+  animation: bounceMini 2s infinite; /* Hiệu ứng nhấp nhô thu hút */
+}
+
+@keyframes bounceMini {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
 </style>
-</head>
-<body>
-<!-- Bảng Popup Đăng ký -->
+ <!-- Bảng Popup Đăng ký -->
 <div id="popupModal" class="modal-overlay">
   <div class="modal-content">
     <span class="close-btn" onclick="closePopup()">&times;</span>
     <h2 class="modal-title">Ưu Đãi Học Phí</h2>
-    <p class="modal-subtitle">* Đăng ký ngay để nhận tư vấn chi tiết</p>
+    <p class="modal-subtitle">* Đăng ký ghi danh ngay để được nhận tư vấn chi tiết</p>
     
     <form id="registerForm">
       <input type="text" name="fullname" placeholder="Họ và tên" required class="modal-input">
       <input type="tel" name="phone" placeholder="Số điện thoại" required class="modal-input">
       <select name="branch" class="modal-input" required>
         <option value="">Chọn cơ sở gần bạn</option>
-        <option value="Cơ sở 1">Cơ sở 1</option>
-        <option value="Cơ sở 2">Cơ sở 2</option>
+        <option value="Cơ sở 1">Cơ sở 1: 113 đường 458 (hoặc đường Phạm Thị Lòng), ấp Thạnh An, Bình Mỹ, Củ Chi.</option>
+        <option value="Cơ sở 2">Cơ sở 2: 699 Tỉnh Lộ 15, ấp 6, xã Tân Thạnh Đông, Củ Chi (gần quán cafe căn nhà cũ)</option>
+       <option value="cơ sở 3"> Cở sở 3 (chuyên bán nhạc cụ): 76A Võ Thị Hồng, Ấp Chợ, Bình Mỹ, Củ Chi</option>
       </select>
       <button type="submit" id="submitBtn" class="modal-submit-btn">Đăng Ký Ngay</button>
     </form>
   </div>
+</div>
+<!-- Nút Đăng ký nổi góc phải (Hiện ra khi tắt Popup) -->
+<div id="floatingRegBtn" class="floating-reg-btn" onclick="openPopup()">
+  🎁 Đăng Ký Ngay
 </div>
 <!-- NAV -->
 <nav>
@@ -721,8 +735,8 @@ const replies = {
   'học phí':       'Học phí tùy theo khóa học và số buổi/tuần. Vui lòng gọi <strong>+84 398 483 274</strong> để được tư vấn cụ thể và nhận báo giá miễn phí nhé! 😊',
   'lịch học':      'Trung tâm mở cửa từ <strong>5:30 PM</strong> các ngày trong tuần. Bạn có thể sắp xếp lịch học linh hoạt phù hợp với thời gian của mình.',
   'độ tuổi':       'Trung tâm nhận học sinh từ <strong>5 tuổi</strong> trở lên và người lớn! Mỗi khóa học được thiết kế phù hợp với từng lứa tuổi và khả năng của học viên.',
-  'địa chỉ':       'Chúng tôi ở tại: <strong> 📍Điểm học tập 1: Số 699, Ấp 6, tỉnh lộ 15, Tân Thạnh Đông, Củ Chi, TP HCM(đối diện cafe nhà gỗ).          📍Điểm học tập 2: số 113, đường Phạm Thị Lòng(Hugo), ấp Thạnh An, xã Trung An, TP HCM,            📍🚘Cửa hàng bán nhạc cụ: đàn Piano, Organ, Guitar: số 76A, đường Võ Thị Hồng, xã Bình Mỹ, Tp HCM.</strong>. Bạn có thể Google Maps "Nguyễn Phan Music" "Nguyễn Phan Music - Dạy Đàn Bình Mỹ" "Nguyễn Phan Music - Cửa hàng bán nhạc cụ" để tìm đường nhé!',
-  'default':       'Cảm ơn bạn đã quan tâm! 🎵 Để được tư vấn nhanh nhất, hãy gọi trực tiếp cho chúng tôi: <strong>+84 398 483 274</strong> hoặc ghé thăm trung tâm sau 5:30 PM các ngày trong tuần nhé!.'
+  'địa chỉ':       'Địa chỉ của trung tâm ở tại: <strong> 📍Điểm học tập 1: Số 699, Ấp 6, tỉnh lộ 15, Tân Thạnh Đông, Củ Chi, TP HCM(đối diện cafe nhà gỗ).          📍Điểm học tập 2: số 113, đường Phạm Thị Lòng(Hugo), ấp Thạnh An, xã Trung An, TP HCM,            📍🚘Cửa hàng bán nhạc cụ: đàn Piano, Organ, Guitar: số 76A, đường Võ Thị Hồng, xã Bình Mỹ, Tp HCM.</strong>. Bạn có thể Google Maps "Nguyễn Phan Music" "Nguyễn Phan Music - Dạy Đàn Bình Mỹ" "Nguyễn Phan Music - Cửa hàng bán nhạc cụ" để tìm đường nhé!',
+  'default':       'Cảm ơn bạn đã quan tâm! 🎵 Để được tư vấn nhanh nhất, hãy gọi trực tiếp cho trung tâm: <strong>+84 398 483 274</strong> hoặc ghé thăm trung tâm sau 5:30 PM các ngày trong tuần nhé!.'
 };
 
 function getReply(msg){
@@ -977,10 +991,52 @@ document.querySelectorAll('.course-card,.perk,.review-card,.teacher-quote').forE
       method: 'POST',
       body: formData
     })
-    .then(response => {
-      alert('Đăng ký thành công! Nguyễn Phan Music sẽ liên hệ với bạn sớm nhất.');
-      this.reset();
+    <script>
+  const SCRIPT_URL = 'DÁN_LẠI_LINK_GOOGLE_SHEET_CỦA_BRO_VÀO_ĐÂY';
+  const modal = document.getElementById('popupModal');
+  const floatingBtn = document.getElementById('floatingRegBtn');
+
+  // Hàm mở Form
+  function openPopup() {
+    modal.style.display = 'flex';
+    floatingBtn.style.display = 'none'; // Ẩn nút nhỏ đi
+  }
+
+  // Hàm đóng Form
+  function closePopup() {
+    modal.style.display = 'none';
+    floatingBtn.style.display = 'block'; // Hiện nút nhỏ lên góc phải
+  }
+
+  // Bấm ra ngoài khoảng đen cũng tự đóng form
+  window.addEventListener('click', function(e) {
+    if (e.target === modal) {
       closePopup();
+    }
+  });
+
+  // Mở popup khi bấm vào các nút có class .btn-register trên web
+  document.querySelectorAll('.btn-register').forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      openPopup();
+    });
+  });
+
+  // Code Gửi dữ liệu Google Sheet
+  document.getElementById('registerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerText = 'Đang gửi...';
+
+    const formData = new FormData(this);
+    
+    fetch(SCRIPT_URL, { method: 'POST', body: formData })
+    .then(response => {
+      alert('Đăng ký thành công! Trung tâm Nguyễn Phan Music sẽ liên hệ với bạn sớm nhất.');
+      this.reset();
+      closePopup(); // Đăng ký xong tự tắt và hiện nút nhỏ
     })
     .catch(error => {
       alert('Đã có lỗi xảy ra. Vui lòng thử lại!');
@@ -998,7 +1054,6 @@ document.querySelectorAll('.course-card,.perk,.review-card,.teacher-quote').forE
   <a class="cta-phone" href="tel:+84398483274">📞 +84 398 483 274</a>
   <a class="cta-phone" href="https://maps.app.goo.gl/m9jRhxfi6UapHycY6" target="_blank">📍 Xem bản đồ</a>
 </section>
-</body>
 <!-- FOOTER -->
 <footer>
   <p><strong>Music Nguyễn Phan</strong> – Trung tâm Âm nhạc &amp; Nghệ thuật</p>
@@ -1012,4 +1067,5 @@ document.querySelectorAll('.course-card,.perk,.review-card,.teacher-quote').forE
   </div>
   <p style="margin-top:24px;font-size:0.75rem;">© 2025 Music Nguyễn Phan. All rights reserved.</p>
 </footer>
+</body>
 </html>
