@@ -302,8 +302,8 @@
   <div class="nav-links">
     <a href="#courses">Khóa học</a>
     <a href="#why">Vì sao chọn chúng tôi</a>
-    <a href="#teacher">Giáo viên</a>
     <a href="#shop">Cửa hàng</a>
+    <a href="#teacher">Giáo viên</a>
     <a href="#cta">Liên hệ</a>
 
   <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Đăng ký ngay</button>
@@ -334,7 +334,7 @@
     <div class="courses-header">
       <div class="section-label">Chương trình học</div>
       <h2 class="section-title">Khóa học dành cho mọi lứa tuổi</h2>
-      <p class="section-sub">Từ trẻ em đến người lớn, chúng tôi có chương trình phù hợp với từng nhu cầu và đam mê.</p>
+      <p class="section-sub">Từ trẻ em đến người lớn, trung tâm có chương trình phù hợp với từng nhu cầu và đam mê.</p>
     </div>
     <div class="courses-grid">
       <div class="course-card card-1">
@@ -865,60 +865,33 @@ document.querySelectorAll('.course-card,.perk,.review-card,.teacher-quote').forE
     transform: scale(1.08);
 }
 </style>
- <script>
+<script>
   // URL Web App từ Google Apps Script
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzdBejwmxxMyBHhkCIBMB6Et-b7Rsupda_0dVx7S9z5cIUzBAhlsQpf-OopAgO4lT1P/exec';
-
-  function closePopup() {
-    document.getElementById('popupModal').style.display = 'none';
-  }
-
-  // Mở popup khi bấm nút Đăng ký
-  document.querySelectorAll('.btn-register').forEach(button => {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('popupModal').style.display = 'flex';
-    });
-  });
-
-  // Gửi dữ liệu form về Google Sheets
-  document.getElementById('registerForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.innerText = 'Đang gửi...';
-
-    const formData = new FormData(this);
-    
-    fetch(SCRIPT_URL, {
-      method: 'POST',
-      body: formData
-    })
-    <script>
-  const SCRIPT_URL = 'DÁN_LẠI_LINK_GOOGLE_SHEET_CỦA_BRO_VÀO_ĐÂY';
+  
   const modal = document.getElementById('popupModal');
   const floatingBtn = document.getElementById('floatingRegBtn');
 
-  // Hàm mở Form
+  // Hàm mở Form Popup
   function openPopup() {
-    modal.style.display = 'flex';
-    floatingBtn.style.display = 'none'; // Ẩn nút nhỏ đi
+    if (modal) modal.style.display = 'flex';
+    if (floatingBtn) floatingBtn.style.display = 'none';
   }
 
-  // Hàm đóng Form
+  // Hàm đóng Form Popup
   function closePopup() {
-    modal.style.display = 'none';
-    floatingBtn.style.display = 'block'; // Hiện nút nhỏ lên góc phải
+    if (modal) modal.style.display = 'none';
+    if (floatingBtn) floatingBtn.style.display = 'block';
   }
 
-  // Bấm ra ngoài khoảng đen cũng tự đóng form
+  // Bấm ra ngoài khoảng đen tự đóng form
   window.addEventListener('click', function(e) {
     if (e.target === modal) {
       closePopup();
     }
   });
 
-  // Mở popup khi bấm vào các nút có class .btn-register trên web
+  // Mở popup khi bấm vào các nút có class .btn-register
   document.querySelectorAll('.btn-register').forEach(button => {
     button.addEventListener('click', function(e) {
       e.preventDefault();
@@ -926,29 +899,36 @@ document.querySelectorAll('.course-card,.perk,.review-card,.teacher-quote').forE
     });
   });
 
-  // Code Gửi dữ liệu Google Sheet
-  document.getElementById('registerForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.innerText = 'Đang gửi...';
+  // Gửi dữ liệu form về Google Sheets
+  const regForm = document.getElementById('registerForm');
+  if (regForm) {
+    regForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerText = 'Đang gửi...';
+      }
 
-    const formData = new FormData(this);
-    
-    fetch(SCRIPT_URL, { method: 'POST', body: formData })
-    .then(response => {
-      alert('Đăng ký thành công! Trung tâm Nguyễn Phan Music sẽ liên hệ với bạn sớm nhất.');
-      this.reset();
-      closePopup(); // Đăng ký xong tự tắt và hiện nút nhỏ
-    })
-    .catch(error => {
-      alert('Đã có lỗi xảy ra. Vui lòng thử lại!');
-    })
-    .finally(() => {
-      btn.disabled = false;
-      btn.innerText = 'Đăng Ký Ngay';
+      const formData = new FormData(this);
+      
+      fetch(SCRIPT_URL, { method: 'POST', body: formData })
+      .then(response => {
+        alert('Đăng ký thành công! Trung tâm Nguyễn Phan Music sẽ liên hệ với bạn sớm nhất.');
+        this.reset();
+        closePopup();
+      })
+      .catch(error => {
+        alert('Đã có lỗi xảy ra. Vui lòng thử lại!');
+      })
+      .finally(() => {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerText = 'Đăng Ký Ngay';
+        }
+      });
     });
-  });
+  }
 </script>
  <!-- CTA -->
 <section id="cta">
