@@ -527,4 +527,517 @@
           </div>
         </div>
         <div class="perk">
-          <div class="perk-icon">⭐</d
+          <div class="perk-icon">⭐</div>
+          <div class="perk-text">
+            <h4>Đánh giá 4.6/5 trên Google</h4>
+            <p>Hàng trăm học sinh và phụ huynh đã chia sẻ trải nghiệm tích cực về trung tâm.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-visual">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Cô rất tận tâm ạ ❤️ Con tôi tiến bộ rõ rệt chỉ sau vài tháng học ở đây!"</p>
+        <div class="reviewer">Nam Nguyễn · 11 tháng trước</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Thật tuyệt vời! Môi trường học tập thân thiện, giáo viên nhiệt tình và yêu nghề."</p>
+        <div class="reviewer">LÊ THANH TUÂNG · 2 năm trước</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Cô Phan dạy âm nhạc rất hay, hai bé nhà tôi rất thích đến học mỗi tuần."</p>
+        <div class="reviewer">Tung Nguyen · 11 tháng trước</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SCRIPTS QUẢN LÝ DANH SÁCH SẢN PHẨM -->
+<script>
+// DANH SÁCH SẢN PHẨM (THÊM/SỬA Ở ĐÂY)
+const products = [
+    {
+        id: 1,
+        title: "Đàn Piano Cơ Yamaha U2",
+        category: "piano",
+        price: "Liên hệ báo giá",
+        image: "piano-u2.jpg",
+        description: "Âm thanh chuẩn ấm, phím gõ êm tay, phù hợp cho cả người mới và chuyên nghiệp! ."
+    },
+    {
+        id: 2,
+        title: "Đàn Piano giả cơ",
+        category: "piano",
+        price: "Liên hệ báo giá",
+        image: "piano-giaco.jpg",
+        description: "Gỗ chất lượng tốt, nước sơn đẹp, âm thanh rất ấm! ."
+    },
+    {
+        id: 3,
+        title: "Đàn Piano điện ClaYamaha Clavinova cvp các đời",
+        category: "piano",
+        price: "Liên hệ báo giá",
+        image: "kho-dan.jpg",
+        description: "Đàn piano điện, âm thanh tốt nhiều tính năng, phù hợp người mới bắt đầu và bán chuyên nghiệp!."
+    },
+    {
+        id: 4,
+        title: "Dây đàn Classic",
+        category: "phukien",
+        price: "50.000",
+        image: "day-dan.jpg",
+        description: "Bộ dây cho đàn Guitar Classic."
+    },
+    {
+        id: 5,
+        title: "Đây đàn Aucoustic",
+        category: "phukien",
+        price: "50.000đ",
+        image: "day-dan-au.jpg",
+        description: "Bộ dây cho đàn Guitar Aucoustic."
+    },
+    {
+        id: 6,
+        title: "Dây đàn Guitar điện",
+        category: "phukien",
+        price: "50.000đ",
+        image: "day-dan-dien.jpg",
+        description: "Bộ dây cho đàn Guitar điện."
+    },
+    {
+        id: 7,
+        title: "Guitar điện fender cũ 90%",
+        category: "guitar",
+        price: "2.000.000đ",
+        image: "eguitar.jpg",
+        description: "Guitar điện fender cũ 90%, chất lượng cao."
+    },
+    {
+        id: 8,
+        title: "Guitar Aucostic",
+        category: "guitar",
+        price: "1.500.000đ",
+        image: "guitar.jpg",
+        description: "Guitar acoustic chất lượng cao."
+    },
+    {
+        id: 9,
+        title: "Dàn Kawai BL71 piano cơ Upright cũ",
+        category: "piano",
+        price: "32tr nay chỉ còn 28tr",
+        image: "kawai.jpg",
+        description: "Piano cơ Upright cũ, chất lượng tốt."
+    },
+    {
+        id: 10,
+        title: "Giáo trình guitar đệm hát biên soạn cho người mới bắt đầu",
+        category: "phukien",
+        price: "70.000đ",
+        image: "giaotrinh.jpg",
+        description: "Giáo trình guitar đệm hát biên soạn cho người mới bắt đầu."
+    },
+    {
+        id: 11,
+        title: "Giá để bản nhạc",
+        category: "phukien",
+        price: "120.000đ",
+        image: "giasach.jpg",
+        description: "Giáo trình guitar đệm hát biên soạn cho người mới bắt đầu."
+    },
+    {
+        id: 12,
+        title: "Ghế ngồi học đàn piano cao cấp",
+        category: "phukien",
+        price: "200.000đ",
+        image: "ghe.jpg",
+        description: "Ghế ngồi học đàn piano cao cấp, thoải mái khi sử dụng."
+    },
+    {
+        id: 13,
+        title: "Giá để đàn guitar",
+        category: "phukien",
+        price: "100.000đ",
+        image: "giadan.jpg",
+        description: "Giá để đàn guitar giúp đàn không bị ngã."
+    },
+    {
+        id: 14,
+        title: "Đàn Yamaha PSR-E373",
+        category: "organ",
+        price: "3.000.000đ",
+        image: "organ.jpg",
+        description: "Đàn Yamaha PSR-E373, đã qua sử dụng nhưng chất lượng cao."
+    }
+];
+
+// Hàm hiển thị sản phẩm ra màn hình
+function renderProducts(items) {
+    const container = document.getElementById('product-list');
+    if (!container) return;
+    
+    container.innerHTML = items.map(p => `
+        <div style="background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="aspect-ratio: 4/3; overflow: hidden; border-radius: 8px; margin-bottom: 15px;">
+                    <img src="${p.image}" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/300x200?text=Anh+San+Pham'">
+                </div>
+                <span style="font-size: 0.75rem; text-transform: uppercase; background: #eef2ff; color: #4f46e5; padding: 3px 8px; border-radius: 4px; font-weight: bold; display: inline-block; margin-bottom: 8px;">${p.category}</span>
+                <h3 style="font-size: 1.1rem; color: #1A0A3C; margin-bottom: 8px; line-height: 1.4;">${p.title}</h3>
+                <p style="color: #666; font-size: 0.88rem; margin-bottom: 15px; line-height: 1.4;">${p.description}</p>
+            </div>
+            <div>
+                <div style="color: #e63946; font-weight: bold; font-size: 1.1rem; margin-bottom: 12px;">${p.price}</div>
+                <a href="https://zalo.me/0398483274" target="_blank" style="display: block; text-align: center; padding: 10px; background: #0088fe; color: #fff; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: bold;">Tư vấn Zalo</a>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Hàm lọc sản phẩm
+function filterProducts(cat) {
+    const btns = document.querySelectorAll('.shop-filter-btn');
+    btns.forEach(b => {
+        b.style.background = '#fff';
+        b.style.color = '#333';
+        b.style.borderColor = '#ddd';
+    });
+    if (event && event.target) {
+        event.target.style.background = '#1A0A3C';
+        event.target.style.color = '#fff';
+        event.target.style.borderColor = '#1A0A3C';
+    }
+
+    if (cat === 'all') {
+        renderProducts(products);
+    } else {
+        const filtered = products.filter(p => p.category === cat);
+        renderProducts(filtered);
+    }
+}
+
+// Chạy lần đầu khi mở trang
+document.addEventListener('DOMContentLoaded', () => {
+    renderProducts(products);
+});
+</script>
+
+<!-- CHATBOT TOGGLE -->
+<button id="chat-toggle" onclick="toggleChat()" aria-label="Mở chat">💬</button>
+
+<!-- CHAT WINDOW -->
+<div id="chat-window">
+  <div class="chat-header">
+    <div class="chat-avatar">🎵</div>
+    <div class="chat-info">
+      <h4>Music Nguyễn Phan</h4>
+      <p>Trả lời trong vài phút ✅</p>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="msg bot">Xin chào! 👋 Chào mừng anh/chị đã quay trở lại với Nguyễn Phan Music. Cần hỗ trợ gì cứ chat với em nhé.</div>
+  </div>
+  <div class="chat-quick" id="quickReplies">
+    <button class="quick-btn" onclick="sendQuick('Học phí bao nhiêu?')">Học phí?</button>
+    <button class="quick-btn" onclick="sendQuick('Lịch học như thế nào?')">Lịch học</button>
+    <button class="quick-btn" onclick="sendQuick('Trẻ mấy tuổi bắt đầu học được?')">Độ tuổi</button>
+    <button class="quick-btn" onclick="sendQuick('Địa chỉ ở đâu?')">Địa chỉ</button>
+  </div>
+  <div class="chat-form">
+    <input id="chatInput" type="text" placeholder="Nhập câu hỏi của bạn…" onkeydown="if(event.key==='Enter')sendMessage()">
+    <button onclick="sendMessage()">➤</button>
+  </div>
+</div>
+
+<script>
+// ── FLOATING NOTES ──
+const noteSymbols = ['♩','♪','♫','♬','𝄞','𝄢'];
+const bg = document.getElementById('notesBg');
+for(let i=0;i<22;i++){
+  const n=document.createElement('div');
+  n.className='note';
+  n.textContent=noteSymbols[Math.floor(Math.random()*noteSymbols.length)];
+  n.style.left=Math.random()*100+'%';
+  n.style.fontSize=(1.2+Math.random()*2)+'rem';
+  n.style.animationDuration=(8+Math.random()*14)+'s';
+  n.style.animationDelay=(Math.random()*12)+'s';
+  n.style.color=['#FFD600','#FF4D6D','#00E5FF','#C77DFF'][Math.floor(Math.random()*4)];
+  bg.appendChild(n);
+}
+
+// ── CHATBOT ──
+const chatOpen = { v: false };
+function toggleChat(){
+  chatOpen.v=!chatOpen.v;
+  const w=document.getElementById('chat-window');
+  if(chatOpen.v){ w.classList.add('open'); document.getElementById('chatInput').focus(); }
+  else w.classList.remove('open');
+}
+
+const replies = {
+  'học phí':       'Dạ học phí tùy theo khóa học và số buổi/tuần. Vui lòng gọi <strong>+84 398 483 274</strong> để được tư vấn cụ thể và nhận báo giá miễn phí nhé! 😊',
+  'lịch học':      'Dạ trung tâm mở cửa từ <strong>5:30 PM</strong> các ngày trong tuần. Bạn có thể sắp xếp lịch học linh hoạt phù hợp với thời gian của mình.',
+  'độ tuổi':       'Dạ trung tâm nhận học sinh từ <strong>5 tuổi</strong> trở lên và người lớn! Mỗi khóa học được thiết kế phù hợp với từng lứa tuổi và khả năng của học viên.',
+  'địa chỉ':       'Dạ trung tâm ở tại: <strong> 📍Điểm học tập 1: Số 699, Ấp 6, tỉnh lộ 15, Tân Thạnh Đông, Củ Chi, TP HCM(đối diện cafe nhà gỗ).          📍Điểm học tập 2: số 113, đường Phạm Thị Lòng(Hugo), ấp Thạnh An, xã Trung An, TP HCM,            📍🚘Cửa hàng bán nhạc cụ: đàn Piano, Organ, Guitar: số 76A, đường Võ Thị Hồng, xã Bình Mỹ, Tp HCM.</strong>. Bạn có thể Google Maps "Nguyễn Phan Music" "Nguyễn Phan Music - Dạy Đàn Bình Mỹ" "Nguyễn Phan Music - Cửa hàng bán nhạc cụ" để tìm đường nhé!',
+  'default':       'Cảm ơn bạn đã quan tâm! 🎵 Để được tư vấn nhanh nhất, hãy gọi trực tiếp cho trung tâm vào số: <strong>+84 398 483 274</strong> hoặc ghé thăm trung tâm sau 5:30 PM các ngày trong tuần nhé!.'
+};
+
+function getReply(msg){
+  const m=msg.toLowerCase();
+  if(m.includes('phí')||m.includes('tiền')||m.includes('giá')) return replies['học phí'];
+  if(m.includes('lịch')||m.includes('giờ')||m.includes('mấy giờ')) return replies['lịch học'];
+  if(m.includes('tuổi')||m.includes('bao nhiêu tuổi')||m.includes('trẻ')) return replies['độ tuổi'];
+  if(m.includes('địa chỉ')||m.includes('ở đâu')||m.includes('đường')) return replies['địa chỉ'];
+  return replies['default'];
+}
+
+function appendMsg(text,role){
+  const box=document.getElementById('chatMessages');
+  const d=document.createElement('div');
+  d.className='msg '+role;
+  d.innerHTML=text;
+  box.appendChild(d);
+  box.scrollTop=box.scrollHeight;
+  return d;
+}
+
+function sendQuick(txt){
+  document.getElementById('quickReplies').style.display='none';
+  appendMsg(txt,'user');
+  const typing=appendMsg('<span></span><span></span><span></span>','bot typing');
+  setTimeout(()=>{
+    typing.className='msg bot';
+    typing.innerHTML=getReply(txt);
+    document.getElementById('chatMessages').scrollTop=9999;
+  },900);
+}
+
+function sendMessage(){
+  const input=document.getElementById('chatInput');
+  const txt=input.value.trim();
+  if(!txt)return;
+  input.value='';
+  document.getElementById('quickReplies').style.display='none';
+  appendMsg(txt,'user');
+  const typing=appendMsg('<span></span><span></span><span></span>','bot typing');
+  setTimeout(()=>{
+    typing.className='msg bot';
+    typing.innerHTML=getReply(txt);
+    document.getElementById('chatMessages').scrollTop=9999;
+  },900);
+}
+
+// ── SCROLL REVEAL (lightweight) ──
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.course-card,.perk,.review-card,.teacher-quote').forEach(el=>{
+  el.style.cssText+='opacity:0;transform:translateY(28px);transition:opacity .55s ease,transform .55s ease;';
+  observer.observe(el);
+});
+</script>
+<!-- BONG BÓNG CHAT ZALO CỐ ĐỊNH -->
+<a href="https://zalo.me/0398483274" target="_blank" class="zalo-float-btn" title="Chat Zalo ngay">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo Chat">
+</a>
+
+<style>
+.zalo-float-btn {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #0088fe;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 136, 254, 0.4);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    animation: zalo-pulse 2s infinite;
+}
+
+.zalo-float-btn img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+.zalo-float-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 136, 254, 0.6);
+}
+
+/* Hiệu ứng tỏa sóng nhẹ */
+@keyframes zalo-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 136, 254, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(0, 136, 254, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 136, 254, 0);
+    }
+}
+</style>
+<!-- BONG BÓNG CHAT FACEBOOK CỐ ĐỊNH -->
+<a href="https://www.facebook.com/MusicNguyenPhan/" target="_blank" class="fb-float-btn" title="Chat Facebook ngay">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook Chat">
+</a>
+
+<style>
+.fb-float-btn {
+    position: fixed;
+    bottom: 170px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #1877F2;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(24, 119, 242, 0.4);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    animation: fb-pulse 2s infinite;
+}
+
+.fb-float-btn img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+.fb-float-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(24, 119, 242, 0.6);
+}
+
+@keyframes fb-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(24, 119, 242, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(24, 119, 242, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(24, 119, 242, 0); 
+    }
+}
+</style>
+<!-- PHẦN KHÔNG GIAN LỚP HỌC THỰC TẾ -->
+<section class="classroom-section">
+    <div class="container">
+        <h2 class="section-title">KHÔNG GIAN LỚP HỌC THỰC TẾ</h2>
+        <p class="section-subtitle">Môi trường học tập hiện đại, ấm cúng và đầy cảm hứng tại Nguyễn Phan Music</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="lop-hoc 3.jpg" alt="Lớp học thực tế"></div>
+            <div class="gallery-item"><img src="hs.jpg" alt="học sinh"></div>
+            <div class="gallery-item"><img src="lop-hoc 1.jpg" alt="Không gian lớp Piano"></div>
+            <div class="gallery-item"><img src="hs1.jpg" alt="Học viên luyện tập"></div>
+            <div class="gallery-item"><img src="lop-hoc 2.jpg" alt="Khu vực lễ tân"></div>
+            <div class="gallery-item"><img src="hs2.jpg" alt="Toàn cảnh lớp học"></div>
+            <div class="gallery-item"><img src="lop-hoc 4.jpg" alt="Bộ cơ đàn Piano"></div>
+            <div class="gallery-item"><img src="hs3.jpg" alt="Cơ cấu bên trong Piano"></div>
+            <div class="gallery-item"><img src="lop-hoc-violin.jpg" alt="Cậu bé học sinh đàn"></div>
+            <div class="gallery-item"><img src="hs4.jpg" alt="Hình ảnh lớp học Nguyễn Phan"></div>
+            <div class="gallery-item"><img src="but.jpg" alt="Học sinh thị phạm"></div>
+            <div class="gallery-item"><img src="hs5.jpg" alt="Học sinh thị phạm"></div>
+            <div class="gallery-item"><img src="dan 1.jpg" alt="Học sinh thị phạm"></div>
+            <div class="gallery-item"><img src="hs6.jpg" alt="Học sinh thị phạm"></div>
+            <div class="gallery-item"><img src="dan 2.jpg" alt="Học sinh thị phạm"></div>
+            <div class="gallery-item"><img src="hs7.jpg" alt="Học sinh thị phạm"></div>
+            <div class="gallery-item"><img src="dan 3.jpg" alt="Học sinh thị phạm"></div>
+            <div class="gallery-item"><img src="hs8.jpg" alt="Học sinh thị phạm"></div>
+            <div class="gallery-item"><img src="dan 4.jpg" alt="Học sinh thị phạm"></div>
+            <div class="gallery-item"><img src="hs9.jpg" alt="Học sinh thị phạm"></div>
+           
+        </div>
+    </div>
+</section>
+
+<style>
+.classroom-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.classroom-section .section-title {
+    font-size: 28px;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.classroom-section .section-subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    aspect-ratio: 4 / 3;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+</style>
+</body>
+<!-- CTA -->
+<section id="cta">
+  <h2>Bắt đầu hành trình âm nhạc hôm nay</h2>
+  <p>Gọi ngay để được sắp xếp lịch theo cá nhân — số lượng có hạn!</p>
+  <a class="cta-phone" href="tel:+84398483274">📞 +84 398 483 274</a>
+  <a class="cta-phone" href="https://maps.app.goo.gl/m9jRhxfi6UapHycY6" target="_blank">📍 Xem bản đồ</a>
+</section>
+<!-- FOOTER -->
+<footer>
+  <p><strong>Music Nguyễn Phan</strong> – Trung tâm Âm nhạc &amp; Nghệ thuật</p>
+  <p style="margin-top:6px;font-size:0.85rem;">113 Đường Phạm Thị Lòng, ấp Thạnh An, Bình Mỹ, Hồ Chí Minh</p>
+  <div class="footer-links">
+    <a href="tel:+84398483274">+84 398 483 274</a>
+    <a href="#courses">Khóa học</a>
+    <a href="#why">Vì sao chọn trung tâm</a>
+    <a href="#teacher">Giáo viên</a>
+    <a href="#shop">Cửa hàng</a>
+  </div>
+  <p style="margin-top:24px;font-size:0.75rem;">© 2025 Music Nguyễn Phan. All rights reserved.</p>
+</footer>
+</html>
